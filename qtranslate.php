@@ -463,6 +463,6 @@ require_once(dirname(__FILE__)."/qtranslate_hooks.php");
 
 require_once( 'BFIGitHubPluginUploader.php' );
 if ( is_admin() ) {
-    new BFIGitHubPluginUpdater( __FILE__, 'rollberttler', "BFI-Core" );
+    new BFIGitHubPluginUpdater( __FILE__, 'rollberttler', "qtranslate-mod" );
 }
 ?>
