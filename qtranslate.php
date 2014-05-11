@@ -3,7 +3,7 @@
 Plugin Name: qTranslate (mod)
 Plugin URI: https://github.com/rollbrettler/qtranslate-mod
 Description: Adds userfriendly multilingual content support into Wordpress. For Problems visit the <a href="http://www.qianqin.de/qtranslate/forum/">Support Forum</a>. Modified with GitHub Updater and removed Version checker.
-Version: 2.5.40b
+Version: 2.5.41c
 Author: Qian Qin, Tim Petter
 Author URI: https://www.timpetter.de
 Tags: multilingual, multi, language, admin, tinymce, qTranslate, Polyglot, bilingual, widget, switcher, professional, human, translation, service
@@ -461,8 +461,11 @@ if(file_exists(dirname(__FILE__)."/qtranslate_services.php"))
 // set hooks at the end
 require_once(dirname(__FILE__)."/qtranslate_hooks.php");
 
-require_once( 'BFIGitHubPluginUploader.php' );
+
+if (!class_exists('BFIGitHubPluginUpdater')) {
+    require_once( 'BFIGitHubPluginUploader.php' );
+}
 if ( is_admin() ) {
-    new BFIGitHubPluginUpdater( __FILE__, 'rollberttler', "qtranslate-mod" );
+    new BFIGitHubPluginUpdater( __FILE__, 'rollbrettler', "qtranslate-mod" );
 }
 ?>
