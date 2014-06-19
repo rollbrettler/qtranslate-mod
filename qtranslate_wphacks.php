@@ -47,18 +47,23 @@ function qtrans_modifyTermFormFor($term) {
 	qtrans_modifyTermForm('tag-name', __('Name'), $term);
 }
 
+function qtrans_TinyMCE_init() {
+	global $q_config;
+	echo "<script type=\"text/javascript\">\n// <![CDATA[\n";
+	echo $q_config['js']['qtrans_updateTinyMCE'];
+	echo "</script>\n";
+}
+
 // Modifys TinyMCE to edit multilingual content
 function qtrans_modifyRichEditor($old_content) {
 	global $q_config;
 	$init_editor = true;
-    /*
 	if($GLOBALS['wp_version'] != QT_SUPPORTED_WP_VERSION) {
 		if(!(isset($_REQUEST['qtranslateincompatiblemessage'])&&$_REQUEST['qtranslateincompatiblemessage']=="shown")) {
 			echo '<div class="updated" id="qtrans_imsg">'.__('The qTranslate Editor has disabled itself because it hasn\'t been tested with your Wordpress version yet. This is done to prevent Wordpress from malfunctioning. You can reenable it by <a href="javascript:qtrans_editorInit();" title="Activate qTranslate" id="qtrans_imsg_link">clicking here</a> (may cause <b>data loss</b>! Use at own risk!). To remove this message permanently, please update qTranslate to the <a href="http://www.qianqin.de/qtranslate/download/">corresponding version</a>.', 'qtranslate').'</div>';
 		}
 		$init_editor = false;
 	}
-    */
 	// save callback hook
 		
 	preg_match("/<textarea[^>]*id=\"([^']+)\"/",$old_content,$matches);
@@ -167,7 +172,7 @@ function qtrans_modifyExcerpt() {
 		echo qtrans_createTitlebarButton('postexcerpt', $language, 'excerpt', 'qtrans_switcher_postexcerpt_'.$language);
 		echo qtrans_createTextArea('postexcerpt', $language, 'excerpt', 'qtrans_switcher_postexcerpt_'.$language);
 	}
-	echo "qtrans_switch_postbox('postexcerpt','excerpt','".$q_config['default_language']."', false);";
+	echo "qtrans_switch_postbox('postexcerpt','excerpt','".$q_config['default_language']."', false);"; 
 	echo "jQuery('#excerpt').hide();";
 	echo "}";
 	echo "// ]]>\n</script>\n";

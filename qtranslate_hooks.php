@@ -254,6 +254,7 @@ add_action('plugins_loaded',				'qtrans_init', 2);
 add_action('admin_head',					'qtrans_adminHeader');
 add_action('admin_menu',					'qtrans_adminMenu');
 add_action('wp_before_admin_bar_render',	'qtrans_fixAdminBar');
+add_action('wp_tiny_mce_init', 				'qtrans_TinyMCE_init');
 
 // Hooks (execution time critical filters) 
 add_filter('the_content',					'qtrans_useCurrentLanguageIfNotFoundShowAvailable', 0);
@@ -266,7 +267,7 @@ add_filter('get_comment_date',				'qtrans_dateFromCommentForCurrentLanguage',0,2
 add_filter('get_comment_time',				'qtrans_timeFromCommentForCurrentLanguage',0,4);
 add_filter('get_post_modified_time',		'qtrans_timeModifiedFromPostForCurrentLanguage',0,3);
 add_filter('get_the_time',					'qtrans_timeFromPostForCurrentLanguage',0,3);
-add_filter('get_the_date',					'qtrans_dateFromPostForCurrentLanguage',0,2);
+add_filter('get_the_date',					'qtrans_dateFromPostForCurrentLanguage',0,4);
 add_filter('locale',						'qtrans_localeForCurrentLanguage',99);
 add_filter('the_title',						'qtrans_useCurrentLanguageIfNotFoundUseDefaultLanguage', 0);
 add_filter('term_name',						'qtrans_useCurrentLanguageIfNotFoundUseDefaultLanguage',0);
